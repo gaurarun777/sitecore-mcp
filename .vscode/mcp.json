@@ -1,0 +1,63 @@
+{
+	"servers": {
+		"sitecore-mcp-server": {
+			"type": "stdio",
+			"command": "dotnet",
+			"args": [
+				"run",
+				"--project",
+				"SitecoreMcpServer.csproj"
+			],
+			"env": {
+				"TRANSPORT": "stdio",
+				"NODE_OPTIONS": "--use-system-ca",
+				"SITECORE_ALLOW_INVALID_CERTIFICATES": "true",
+				"GRAPHQL_ENDPOINT": "${input:graphqlEndpoint}",
+				"GRAPHQL_SCHEMAS": "edge,master,core",
+				"GRAPHQL_API_KEY": "${input:graphqlApiKey}",
+				"ITEM_SERVICE_SERVER_URL": "${input:sitecoreServerUrl}",
+				"ITEM_SERVICE_DOMAIN": "sitecore",
+				"ITEM_SERVICE_USERNAME": "${input:sitecoreUsername}",
+				"ITEM_SERVICE_PASSWORD": "${input:sitecorePassword}",
+				"POWERSHELL_SERVER_URL": "${input:sitecoreServerUrl}",
+				"POWERSHELL_DOMAIN": "sitecore",
+				"POWERSHELL_USERNAME": "${input:sitecoreUsername}",
+				"POWERSHELL_PASSWORD": "${input:sitecorePassword}"
+			}
+		}
+	},
+	"inputs": [
+		{
+			"id": "sitecoreServerUrl",
+			"type": "promptString",
+			"description": "Sitecore CM server URL (e.g. https://sc104sc.dev.local)",
+			"default": "https://sc104sc.dev.local"
+		},
+		{
+			"id": "graphqlEndpoint",
+			"type": "promptString",
+			"description": "Sitecore GraphQL endpoint URL",
+			"default": "https://sc104sc.dev.local/sitecore/api/graph/edge"
+		},
+		{
+			"id": "graphqlApiKey",
+			"type": "promptString",
+			"description": "Sitecore GraphQL API key",
+			"default": "{874D4857-8DBE-4314-9B30-16B122A7D78C}",
+			"password": true
+		},
+		{
+			"id": "sitecoreUsername",
+			"type": "promptString",
+			"description": "Sitecore username (e.g. admin)",
+			"default": "admin"
+		},
+		{
+			"id": "sitecorePassword",
+			"type": "promptString",
+			"description": "Sitecore password",
+			"default": "b",
+			"password": true
+		}
+	]
+}
