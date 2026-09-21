@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find \"C:/mcp/sample mcp/MyMcpServer\" -type f -not -path \"*/.vs/*\" -not -path \"*/bin/*\" -not -path \"*/obj/*\" | sort)",
+      "Read(//c/mcp/sample mcp/MyMcpServer/**)"
+    ]
+  }
+}
